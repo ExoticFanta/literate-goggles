@@ -31,8 +31,8 @@ public class GameSettings : MonoBehaviour
 
     public struct Settings
     {
-        public EDifficultyNumber EDifficultyNumber;
-        public ECategoriesNumber ECategoriesNumber;
+        public EDifficultyNumber DifficultyNumber;
+        public ECategoriesNumber CategoriesNumber;
     };
     private Settings _gameSettings;
 
@@ -57,40 +57,43 @@ public class GameSettings : MonoBehaviour
 
     }
 
-    public void SetEDifficultyNumber(EDifficultyNumber Number)
+    public void SetDifficultyNumber(EDifficultyNumber Number)
     {
-        if (_gameSettings.EDifficultyNumber == EDifficultyNumber.NotSet)
+        if (_gameSettings.DifficultyNumber == EDifficultyNumber.NotSet)
             _settings++;
 
-        _gameSettings.EDifficultyNumber = Number;
+        _gameSettings.DifficultyNumber = Number;
     }
 
     public void SetECategories(ECategoriesNumber cat)
     {
-        if (_gameSettings.EDifficultyNumber == EDifficultyNumber.NotSet)
+        if (_gameSettings.DifficultyNumber == EDifficultyNumber.NotSet)
             _settings++;
 
-        _gameSettings.ECategoriesNumber = cat;
+        _gameSettings.CategoriesNumber = cat;
     }
 
     public EDifficultyNumber GetEDifficultyNumber()
     {
-        return _gameSettings.EDifficultyNumber;
+        return _gameSettings.DifficultyNumber;
     }
 
     public ECategoriesNumber GetECategoriesNumber()
     {
-        return _gameSettings.ECategoriesNumber;
+        return _gameSettings.CategoriesNumber;
     }
 
     public void ResetGameSettings ()
     {
         _settings = 0;
-        _gameSettings.EDifficultyNumber = EDifficultyNumber.NotSet;
-        _gameSettings.ECategoriesNumber = ECategoriesNumber.NotSet;
+        _gameSettings.DifficultyNumber = EDifficultyNumber.NotSet;
+        _gameSettings.CategoriesNumber = ECategoriesNumber.NotSet;
     }
 
-
+    public bool AllSettingsReady()
+    {
+        return _settings == SettingNumber;
+    }
 
 
 }
